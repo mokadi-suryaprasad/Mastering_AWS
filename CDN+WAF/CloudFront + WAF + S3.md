@@ -11,32 +11,32 @@ This architecture improves **performance**, **security**, and **availability** f
 
 # 1. Architecture Diagram (Conceptual)
 
-       ┌──────────────────────────┐
-       │        Route 53          │
-       └────────────┬─────────────┘
-                    │
-                    ▼
-       ┌──────────────────────────┐
-       │   CloudFront (CDN)       │
-       │  - Edge Locations         │
-       │  - Caching                │
-       └───────┬──────────────────┘
-               │  Integrated At Edge
-               ▼
-       ┌──────────────────────────┐
-       │        AWS WAF           │
-       │  - SQLi, XSS Protection  │
-       │  - Bot Control           │
-       │  - Rate Limiting         │
-       └─────────┬────────────────┘
-                 │
-    ┌────────────┼────────────┬──────────────┐
-    ▼            ▼            ▼              ▼
+                   ┌──────────────────────────┐
+                  │          Route 53        │
+                  └──────────────┬───────────┘
+                                 │
+                                 ▼
+                  ┌──────────────────────────┐
+                  │     CloudFront (CDN)     │
+                  │    - Edge Locations      │
+                  │    - Caching             │
+                  └─────────────┬────────────┘
+                                │   (Integrated at Edge)
+                                ▼
+                  ┌──────────────────────────┐
+                  │          AWS WAF          │
+                  │   - SQLi, XSS Protection  │
+                  │   - Bot Control           │
+                  │   - Rate Limiting         │
+                  └─────────────┬────────────┘
+                                │
+         ┌──────────────┬──────────────┬───────────────┬──────────────┐
+         ▼              ▼              ▼               ▼
+ ┌────────────┐  ┌────────────┐  ┌────────────┐  ┌───────────────┐
+ │     S3     │  │     ALB    │  │   API GW   │  │   Custom      │
+ │   Static   │  │  EC2/EKS   │  │  Backend   │  │   Origin      │
+ └────────────┘  └────────────┘  └────────────┘  └───────────────┘
 
-┌────────┐   ┌────────┐ ┌────────┐ ┌───────────┐
-│ S3│ALB │   API GW │ │ Custom │
-│Static  │    EC2/EKS  │ Backend│ │ Origin    │
-└────────┘   └────────┘ └────────┘ └───────────┘
 
 ---
 
