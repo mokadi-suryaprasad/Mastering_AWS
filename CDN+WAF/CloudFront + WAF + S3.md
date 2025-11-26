@@ -1,4 +1,4 @@
-# CloudFront + WAF + S3 / ALB Architecture (Detailed Explanation)
+# CloudFront + WAF + S3 / ALB Architecture
 
 ## 📌 Overview
 This architecture improves **performance**, **security**, and **availability** for modern web applications using:
