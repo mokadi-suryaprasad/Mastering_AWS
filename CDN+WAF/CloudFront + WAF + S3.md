@@ -11,7 +11,7 @@ This architecture improves **performance**, **security**, and **availability** f
 
 # 1. Architecture Diagram (Conceptual)
 
-                   ┌──────────────────────────┐
+                  ┌──────────────────────────┐
                   │          Route 53        │
                   └──────────────┬───────────┘
                                  │
@@ -33,9 +33,10 @@ This architecture improves **performance**, **security**, and **availability** f
          ┌──────────────┬──────────────┬───────────────┬──────────────┐
          ▼              ▼              ▼               ▼
  ┌────────────┐  ┌────────────┐  ┌────────────┐  ┌───────────────┐
- │     S3     │  │     ALB    │  │   API GW   │  │   Custom      │
- │   Static   │  │  EC2/EKS   │  │  Backend   │  │   Origin      │
+ │     S3      │  │     ALB     │  │   API GW   │  │   Custom       │
+ │   Static    │  │  EC2/EKS    │  │  Backend   │  │   Origin       │
  └────────────┘  └────────────┘  └────────────┘  └───────────────┘
+
 
 
 ---
