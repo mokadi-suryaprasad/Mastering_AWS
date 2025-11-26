@@ -11,40 +11,7 @@ This architecture improves **performance**, **security**, and **availability** f
 
 # 1. Architecture Diagram (Conceptual)
 
-                           ┌──────────────────────────┐
-                           │          Route 53        │
-                           └──────────────┬───────────┘
-                                          │
-                                          ▼
-                           ┌──────────────────────────┐
-                           │     CloudFront (CDN)     │
-                           │   - Edge Locations       │
-                           │   - Caching              │
-                           └──────────────┬───────────┘
-                                          │
-                                (Integrated at Edge)
-                                          │
-                                          ▼
-                           ┌──────────────────────────┐
-                           │          AWS WAF         │
-                           │  - SQLi, XSS Protection  │
-                           │  - Bot Control           │
-                           │  - Rate Limiting         │
-                           └──────────────┬───────────┘
-                                          │
-          ┌───────────────────────────────┼───────────────────────────────┐
-          ▼                               ▼                                ▼
-   ┌──────────────┐              ┌────────────────┐              ┌────────────────┐
-   │      S3       │              │       ALB       │              │     API GW     │
-   │    Static     │              │    EC2 / EKS    │              │    Backend     │
-   └──────────────┘              └────────────────┘              └────────────────┘
-                                          ▼
-                                 ┌────────────────┐
-                                 │   Custom Origin │
-                                 └────────────────┘
-        
-
-
+Client → CloudFront → WAF → ALB → EC2/EKS/ECS
 
 ---
 
